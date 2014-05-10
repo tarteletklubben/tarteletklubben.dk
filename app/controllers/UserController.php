@@ -7,6 +7,12 @@ class UserController extends \BaseController {
 		$this->beforeFilter('auth', array('except' => array('getLogin', 'getCreated', 'getNotActivated')));
 	}
 
+	public function getList()
+	{
+		$users = User::all();
+		return View::make('user-list')->with('users', $users);
+	}
+
 	public function getProfile()
 	{
 		return View::make('profile');

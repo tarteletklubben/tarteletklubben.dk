@@ -19,6 +19,12 @@
 			<ul class="nav navbar-nav navbar-right">
 				@if(Auth::check())
 					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{{action('UserController@getList')}}">Brugere</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}} {{Auth::user()->surname}}<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="{{action('UserController@getProfile')}}">Profil</a></li>
