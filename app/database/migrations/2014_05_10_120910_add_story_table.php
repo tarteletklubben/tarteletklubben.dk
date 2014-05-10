@@ -15,7 +15,6 @@ class AddStoryTable extends Migration {
 		Schema::create('stories', function(Blueprint $table)
 		{
 			$table->increments('id')->unsigned();
-			$table->datetime('date');
 			$table->string('headline');
 			$table->text('content');
 			$table->timestamps();
