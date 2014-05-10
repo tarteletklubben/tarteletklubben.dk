@@ -4,7 +4,7 @@
 
 	<h1>Nyheder</h1>
 	@foreach($stories as $story)
-		<div class="table-responsive">
+		<div class="table">
 			<table class="table table-bordered">
 				<tr>
 					<th colspan="2">{{$story->headline}}</th>
