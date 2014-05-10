@@ -43,8 +43,10 @@ class UserController extends \BaseController {
 
 			if($user && $user->activated)
 			{
+				$user->profile_picture = $result['picture'];
+				$user->save();
 				Auth::login($user);
-				return Redirect::to('/');
+				return Redirect::intended(action('UserController@getProfile'));
 			}
 			else if($user && !$user->activated)
 			{
@@ -56,6 +58,7 @@ class UserController extends \BaseController {
 				$user->name = $result['given_name'];
 				$user->surname = $result['family_name'];
 				$user->email = $result['email'];
+				$user->profile_picture = $result['picture'];
 				$user->save();
 				return Redirect::action('UserController@getCreated');
 			}
