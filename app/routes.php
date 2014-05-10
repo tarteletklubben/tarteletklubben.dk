@@ -13,7 +13,8 @@
 
 Route::get('/', function()
 {
-	return View::make('index');
+	$stories = Story::latest('date')->get();
+	return View::make('index')->with('stories', $stories);
 });
 
 
