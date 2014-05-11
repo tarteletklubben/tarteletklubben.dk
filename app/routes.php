@@ -13,9 +13,10 @@
 
 Route::get('/', function()
 {
-	$stories = Story::latest('created_at')->get();
+	$stories = Story::latest('created_at')->take(5)->get();
 	return View::make('index')->with('stories', $stories);
 });
 
 
 Route::controller('/user', 'UserController');
+Route::controller('/news', 'StoryController');
