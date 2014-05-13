@@ -9,7 +9,7 @@ class UserController extends \BaseController {
 
 	public function getList()
 	{
-		$users = User::where('activated', true)->orderBy('name')->get();
+		$users = User::where('activated', true)->orderBy('name')->orderBy('surname')->get();
 		$users_not_activated = User::where('activated', false)->orderBy('name')->get();
 		return View::make('user-list')->with('users', $users)->with('users_not_activated', $users_not_activated);
 	}
