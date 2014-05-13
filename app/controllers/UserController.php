@@ -9,8 +9,9 @@ class UserController extends \BaseController {
 
 	public function getList()
 	{
-		$users = User::all();
-		return View::make('user-list')->with('users', $users);
+		$users = User::where('activated', true)->orderBy('name')->get();
+		$users_not_activated = User::where('activated', false)->orderBy('name')->get();
+		return View::make('user-list')->with('users', $users)->with('users_not_activated', $users_not_activated);
 	}
 
 	public function getProfile()
