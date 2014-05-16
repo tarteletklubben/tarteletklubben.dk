@@ -37,15 +37,15 @@
 	</div>
 
 	@if($user->stories->count() > 0)
-		<div class="row">
+		<div class="row top-space">
 			@include('templates.story-list', array('stories' => $user->stories, 'paginate' => false))
 		</div>
 	@endif
 
 	@if(!$user->activated && Auth::check())
-		<div class="row">
+		<div class="row top-space">
 			<div class="col-xs-3 col-xs-offset-9">
-				<a href="{{action('UserController@getActivate', $user->id)}}">Aktiver!</a>
+				<a href="{{action('UserController@getActivate', $user->id)}}" class="btn btn-success">Aktiver!</a>
 			</div>
 		</div>
 	@endif
