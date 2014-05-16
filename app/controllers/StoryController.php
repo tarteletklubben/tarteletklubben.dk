@@ -42,6 +42,8 @@ class StoryController extends \BaseController {
 		$story->content = Input::get('content');
 		$story->save();
 
+		$story->users()->attach(Auth::user(), array('user' => 'author'));
+
 		return Redirect::action('StoryController@getIndex');
 	}
 
@@ -52,6 +54,9 @@ class StoryController extends \BaseController {
 		$story->headline = Input::get('headline');
 		$story->content = Input::get('content');
 		$story->save();
+
+		if(!$story->editors->contains(Auth::user()))
+			$story->users()->attach(Auth::user(), array('user' => 'editor'));
 
 		return Redirect::action('StoryController@getStory', $id);
 	}
