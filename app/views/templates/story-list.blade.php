@@ -3,5 +3,5 @@
 @endforeach
 
 @if($paginate)
-	{{$stories->links()}}
+	<div align="center">{{$stories->links()}}</div>
 @endif

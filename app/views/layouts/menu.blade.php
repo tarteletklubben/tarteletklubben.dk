@@ -22,7 +22,9 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="{{action('UserController@getList')}}">Brugere</a></li>
+							<li class="divider"></li>
 							<li><a href="{{action('StoryController@getIndex')}}">Nyheder</a></li>
+							<li><a href="{{action('StoryController@getAddStory')}}">Tilføj nyhed</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
