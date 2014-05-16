@@ -14,9 +14,21 @@ class UserController extends \BaseController {
 		return View::make('user-list')->with('users', $users)->with('users_not_activated', $users_not_activated);
 	}
 
-	public function getProfile()
+	public function getProfile($id = null)
 	{
-		return View::make('profile');
+		if($id)
+			return View::make('profile')->with('user', User::findOrFail($id));
+		else
+			return View::make('profile')->with('user', Auth::user());
+	}
+
+	public function getActivate($id)
+	{
+		$user = User::findOrFail($id);
+		$user->activated = 1;
+		$user->save();
+
+		return Redirect::action('UserController@getProfile', $id);
 	}
 
 	public function getCreated()

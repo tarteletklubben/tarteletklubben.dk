@@ -5,13 +5,12 @@
 	<h1>Brugere</h1>
 	<table class="table table-bordered">
 		<tr>
-			<th>Navn</th><th>Mail</th><th>Billede</th>
+			<th>Navn</th><th>Billede</th>
 		</tr>
 		@foreach($users as $user)
 			<tr>
-				<td>{{$user->name}} {{$user->surname}}</td>
-				<td>{{$user->email}}</td>
-				<td width="20%"><img src="{{$user->profile_picture}}" class="img-responsive img-thumbnail"></td>
+				<td><a href="{{action('UserController@getProfile', $user->id)}}">{{$user->name}} {{$user->surname}}</a></td>
+				<td width="20%"><a href="{{action('UserController@getProfile', $user->id)}}"><img src="{{$user->profile_picture}}" class="img-responsive img-thumbnail"></a></td>
 			</tr>
 		@endforeach
 	<table>
@@ -20,13 +19,12 @@
 		<h1>Ikke aktiveret</h1>
 		<table class="table table-bordered">
 			<tr>
-				<th>Navn</th><th>Mail</th><th>Billede</th>
+				<th>Navn</th><th>Billede</th>
 			</tr>
 			@foreach($users_not_activated as $user)
 				<tr>
-					<td>{{$user->name}} {{$user->surname}}</td>
-					<td>{{$user->email}}</td>
-					<td width="20%"><img src="{{$user->profile_picture}}" class="img-responsive img-thumbnail"></td>
+					<td><a href="{{action('UserController@getProfile', $user->id)}}">{{$user->name}} {{$user->surname}}</a></td>
+					<td width="20%"><a href="{{action('UserController@getProfile', $user->id)}}"><img src="{{$user->profile_picture}}" class="img-responsive img-thumbnail"></a></td>
 				</tr>
 			@endforeach
 		<table>
