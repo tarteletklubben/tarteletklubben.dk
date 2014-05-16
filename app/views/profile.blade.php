@@ -15,6 +15,14 @@
 					<td>@if(Auth::check()){{$user->email}}@else Skjult @endif</td>
 				</tr>
 				<tr>
+					<th>Kasketter</th>
+					<td>
+						@foreach($user->roles as $role)
+							{{$role->name}}<br/>
+						@endforeach
+					</td>
+				</tr>
+				<tr>
 					<th>Meldt ind</th>
 					<td>{{$user->created_at}}</td>
 				</tr>
