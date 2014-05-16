@@ -82,7 +82,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function stories()
 	{
-		return $this->belongsToMany('Story');
+		return $this->belongsToMany('Story')->orderBy('created_at', 'desc')->distinct();
 	}
 
 	public function roles()

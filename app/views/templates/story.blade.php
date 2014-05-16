@@ -21,10 +21,13 @@
 		</td>
 		<td>{{$story->content}}</td>
 	</tr>
-	@if(Auth::check())
+	@if(Auth::check() && Auth::user()->isAdmin())
 		<tr>
 			<td colspan="2" align="right">
-				<a href="{{action('StoryController@getAddStory', array('id' => $story->id))}}"><small>Rediger</small></a>
+				{{Form::open(array('action' => array('StoryController@deleteStory', $story->id), 'method' => 'delete'))}}
+					<a href="{{action('StoryController@getAddStory', array('id' => $story->id))}}" class="btn btn-warning">Rediger</a>
+					{{Form::submit('Slet', $attributes = array('class' => 'btn btn-danger'))}}
+				{{Form::close()}}
 			</td>
 		</tr>
 	@endif

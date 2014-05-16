@@ -7,7 +7,7 @@ class StoryController extends \BaseController {
 	public function __construct()
 	{
 		$this->beforeFilter('auth', array('except' => array('getIndex', 'getStory')));
-		$this->beforeFilter('admin', array('only' => array('getAddStory', 'postAddStory', 'putAddStory')));
+		$this->beforeFilter('admin', array('only' => array('getAddStory', 'postAddStory', 'putAddStory', 'deleteStory')));
 	}
 
 	public function getIndex()
@@ -60,5 +60,14 @@ class StoryController extends \BaseController {
 			$story->users()->attach(Auth::user(), array('user' => 'editor'));
 
 		return Redirect::action('StoryController@getStory', $id);
+	}
+
+	public function deleteStory($id)
+	{
+		$story = Story::findOrFail($id);
+		$story->users()->detach();
+		$story->delete();
+
+		return Redirect::back();
 	}
 }
