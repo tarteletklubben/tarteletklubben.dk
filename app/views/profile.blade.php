@@ -42,7 +42,7 @@
 		</div>
 	@endif
 
-	@if(!$user->activated && Auth::check())
+	@if(!$user->activated && Auth::check() && Auth::user()->isAdmin())
 		<div class="row top-space">
 			<div class="col-xs-3 col-xs-offset-9">
 				<a href="{{action('UserController@getActivate', $user->id)}}" class="btn btn-success">Aktiver!</a>
