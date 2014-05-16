@@ -10,10 +10,10 @@
 					<th>Navn</th>
 					<td>{{$user->name}} {{$user->surname}}</td>
 				<tr>
-				<tr>
-					<th>Mail</th>
-					<td>{{$user->email}}</td>
-				<tr>
+					<tr>
+						<th>Mail</th>
+						<td>@if(Auth::check()){{$user->email}}@else Skjult @endif</td>
+					<tr>
 			</table>
 		</div>
 
@@ -24,7 +24,13 @@
 		@endif
 	</div>
 
-	@if(!$user->activated)
+	@if($user->stories->count() > 0)
+		<div class="row">
+			@include('templates.story-list', array('stories' => $user->stories, 'paginate' => false))
+		</div>
+	@endif
+
+	@if(!$user->activated && Auth::check())
 		<div class="row">
 			<div class="col-xs-3 col-xs-offset-9">
 				<a href="{{action('UserController@getActivate', $user->id)}}">Aktiver!</a>
