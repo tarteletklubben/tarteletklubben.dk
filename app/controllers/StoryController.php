@@ -7,6 +7,7 @@ class StoryController extends \BaseController {
 	public function __construct()
 	{
 		$this->beforeFilter('auth', array('except' => array('getIndex', 'getStory')));
+		$this->beforeFilter('admin', array('only' => array('getAddStory', 'postAddStory', 'putAddStory')));
 	}
 
 	public function getIndex()

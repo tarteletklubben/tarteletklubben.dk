@@ -24,7 +24,9 @@
 							<li><a href="{{action('UserController@getList')}}">Brugere</a></li>
 							<li class="divider"></li>
 							<li><a href="{{action('StoryController@getIndex')}}">Nyheder</a></li>
-							<li><a href="{{action('StoryController@getAddStory')}}">Tilføj nyhed</a></li>
+							@if(Auth::user()->isAdmin())
+								<li><a href="{{action('StoryController@getAddStory')}}">Tilføj nyhed</a></li>
+							@endif
 						</ul>
 					</li>
 					<li class="dropdown">
