@@ -5,6 +5,7 @@ class UserController extends \BaseController {
 	public function __construct()
 	{
 		$this->beforeFilter('auth', array('except' => array('getLogin', 'getCreated', 'getNotActivated', 'getProfile')));
+		$this->beforeFilter('admin', array('only' => 'getActivate'));
 	}
 
 	public function getList()
