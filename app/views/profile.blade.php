@@ -5,15 +5,19 @@
 	<h1>Profil</h1>
 	<div class="row">
 		<div class="col-xs-9">
-			<table class="table">
+			<table class="table table-hover">
 				<tr>
 					<th>Navn</th>
 					<td>{{$user->name}} {{$user->surname}}</td>
 				<tr>
-					<tr>
-						<th>Mail</th>
-						<td>@if(Auth::check()){{$user->email}}@else Skjult @endif</td>
-					<tr>
+				<tr>
+					<th>Mail</th>
+					<td>@if(Auth::check()){{$user->email}}@else Skjult @endif</td>
+				<tr>
+				<tr>
+					<th>Meldt ind</th>
+					<td>{{$user->created_at}}</td>
+				<tr>
 			</table>
 		</div>
 
