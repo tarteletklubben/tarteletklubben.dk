@@ -9,15 +9,15 @@
 				<tr>
 					<th>Navn</th>
 					<td>{{$user->name}} {{$user->surname}}</td>
-				<tr>
+				</tr>
 				<tr>
 					<th>Mail</th>
 					<td>@if(Auth::check()){{$user->email}}@else Skjult @endif</td>
-				<tr>
+				</tr>
 				<tr>
 					<th>Meldt ind</th>
 					<td>{{$user->created_at}}</td>
-				<tr>
+				</tr>
 			</table>
 		</div>
 
