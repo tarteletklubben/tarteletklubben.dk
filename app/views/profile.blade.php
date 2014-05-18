@@ -38,6 +38,7 @@
 
 	@if($user->stories->count() > 0)
 		<div class="row top-space">
+			<h1>Bidrag</h1>
 			@include('templates.story-list', array('stories' => $user->stories, 'paginate' => false))
 		</div>
 	@endif
