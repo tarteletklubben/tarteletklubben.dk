@@ -83,6 +83,7 @@ class UserController extends \BaseController {
 				$user->email = $result['email'];
 				$user->profile_picture = $result['picture'];
 				$user->save();
+				$user->roles()->attach(Role::where('name', 'Gæst')->first());
 				return Redirect::action('UserController@getCreated');
 			}
 		}
