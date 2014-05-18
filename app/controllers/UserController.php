@@ -20,8 +20,10 @@ class UserController extends \BaseController {
 	{
 		if($id)
 			return View::make('profile')->with('user', User::findOrFail($id));
-		else
+		else if(Auth::check())
 			return View::make('profile')->with('user', Auth::user());
+		else
+			return Redirect::to('/');
 	}
 
 	public function getActivate($id)
