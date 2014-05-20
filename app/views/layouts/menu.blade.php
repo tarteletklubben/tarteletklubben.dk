@@ -38,7 +38,7 @@
 						</ul>
 					</li>
 				@else
-					<li><a class="btn btn-link" href="{{action('UserController@getLogin')}}">Log ind via Google</a></li>
+					<li><a class="btn btn-link" href="{{action('UserController@getGoogleAuth')}}">Log ind via Google</a></li>
 				@endif
 			</ul>
 		</div><!-- /.navbar-collapse -->

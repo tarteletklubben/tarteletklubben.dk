@@ -4,7 +4,7 @@ class UserController extends \BaseController {
 
 	public function __construct()
 	{
-		$this->beforeFilter('auth', array('except' => array('getLogin', 'getCreated', 'getNotActivated', 'getProfile')));
+		$this->beforeFilter('auth', array('except' => array('getGoogleAuth', 'getCreated', 'getNotActivated', 'getProfile')));
 		$this->beforeFilter('admin', array('only' => 'getActivate'));
 	}
 
@@ -53,7 +53,7 @@ class UserController extends \BaseController {
 		return Redirect::to('/');
 	}
 
-	public function getLogin()
+	public function getGoogleAuth()
         {
 		$code = Input::get( 'code' );
 		$googleService = OAuth::consumer( 'Google' );
